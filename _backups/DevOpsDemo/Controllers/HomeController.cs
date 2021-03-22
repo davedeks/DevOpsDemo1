@@ -6,21 +6,16 @@ namespace DevOpsDemo.Controllers
 {
     public class HomeController : Controller
     {
-        //IPostRepository postRepository;
-        //public HomeController(IPostRepository _postRepository)
-        //{
-        //    postRepository = _postRepository;
-        //}
-        //public IActionResult Index()
-        //{
-        //    var model = postRepository.GetPosts();
-        //    return View(model);
-        //}
+        IPostRepository postRepository;
+        public HomeController(IPostRepository _postRepository)
+        {
+            postRepository = _postRepository;
+        }
         public IActionResult Index()
         {
-            return View();
+            var model = postRepository.GetPosts();
+            return View(model);
         }
-
         public IActionResult About()
         {
             ViewData["Message"] = "Your application description page.";
